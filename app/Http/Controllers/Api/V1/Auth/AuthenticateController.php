@@ -254,4 +254,17 @@ class AuthenticateController extends Controller
             ))->toJson($exception);
         }
     }
+
+    public function logout(): JsonResponse
+    {
+        try {
+            auth()->user()->currentAccessToken()->delete();
+            return (new DataResponse('Logged out successfully'))->toJson();
+        } catch (Throwable $exception) {
+            return (new ErrorResponse(
+                'Failed to logout.',
+                HTTPResponse::HTTP_INTERNAL_SERVER_ERROR,
+            ))->toJson($exception);
+        }
+    }
 }

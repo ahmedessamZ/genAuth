@@ -16,6 +16,7 @@ Route::group(['prefix' => 'v1/auth', 'middleware' => ['throttle:5,1', CheckApiTo
     Route::post('verify-otp', [AuthenticateController::class, 'verifyOtp']);
     Route::post('login', [AuthenticateController::class, 'login']);
     Route::post('register', [AuthenticateController::class, 'register']);
+    Route::post('logout', [AuthenticateController::class, 'logout'])->middleware('auth:sanctum');
     Route::put('complete-profile', [AuthenticateController::class, 'completeProfile'])->middleware('auth:sanctum');
     Route::post('send-otp-email', [AuthenticateController::class, 'sendOtpEmail'])->middleware('auth:sanctum');
     Route::post('verify-email', [AuthenticateController::class, 'verifyEmail'])->middleware('auth:sanctum');
