@@ -32,7 +32,7 @@ class UploadController extends Controller
             $mediaData = $fileService->getFile()->toArray();
 
             return (new DataResponse(
-                'successfully uploaded',
+                'media successfully uploaded',
                 $mediaData,
             ))->toJson();
 
